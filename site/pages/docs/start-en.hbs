@@ -7,46 +7,197 @@
 	"dateModified": "2014-03-27"
 }
 ---
-<p>If you are working behind a proxy, you may want to look at the <a href="proxy-en.html">proxy troubleshooting guide</a>.</p>
+<div class="row">
+	<div class="wb-pg-bnr container">
+		<h1>Getting started with the Web Experience Toolkit</h1>
+		<p>Follow these quick steps to understand how to get started using the Web Experience Toolkit on your own site to create <a href="home-en.html">usable</a>, <a href="home-en.html">accessible</a>, <a href="home-en.html">mobile-friendly websites and applications</a>. Before you get started, discover which <a href="#">variants</a> are available in the Web Experience Toolkit. Start by choosing a flexible theme. Then find the components that meet your content needs. Finally, customize display elements such as buttons and icons.</p>
+	</div>
+</div>
 
-<section>
-	<h2 id="implement">I want to use WET on my website</h2>
-	<ol>
-		<li>Grab the latest stable release from the <a href="versions/dwnld-en.html">downloads page</a>.</li>
-		<li><a href="http://wet-boew.github.io/wet-boew-styleguide/v4/index-en.html">Review the style guide</a> for information on implementing WET on your site.</li>
-	</ol>
-</section>
 
-<section>
-	<h2 id="theme">I want to customize WET and design a new WET theme</h2>
-	<ol>
-		<li><a href="http://nodejs.org/">Install NodeJS</a> for your platform.</li>
-		<li>Create a directory for your project.</li>
-		<li>Install the <a href="http://gruntjs.com/">Grunt <abbr title="Command Line Interface">CLI</abbr></a>, <a href="http://yeoman.io/">Yeoman</a>, and <a href="http://bower.io">Bower</a> packages globally by running <code>npm install -g grunt-cli yo bower</code> from the command line console (Command Prompt on Windows, Terminal on OS X, or other shell environment on Linux or Unix).</li>
-		<li>Install the WET theme generator by running <code>npm install -g generator-wet-boew-theme</code>.</li>
-		<li>Run <code>yo wet-boew-theme</code> from the command prompt, and answer the questions at the prompt to setup your theme project.</li>
-	</ol>
-</section>
+		<div id="get-started-steps">
+			<div class="row">
+			<details>
+				<summary>
+						<span class="step-title"><object type="image/svg+xml" tabindex="-1" role="img" data="images/1-circle.svg" aria-label="Web Experience Toolkit"></object>Choose a theme</span><span class="step-details">There are five themes to choose from. You define the look and feel of your website through the cascading style sheet (CSS). If you are using a content management system, then you can find more information in <a href="#">variants.</a></span>
+				</summary>
+				<div class="tgl-panel">
+			<div class="row theme-link">
+						<div class="col-md-4 col-sm-6">
+							<h4>Base theme</h4>
+							<a href="http://wet-boew.github.io/themes-dist/theme-base/docs/ref/theme-base/theme-base-en.html" target="_blank"><object type="image/svg+xml" tabindex="-1" role="img" data="images/basetheme.svg" aria-label="Web Experience Toolkit"></object></a>
+							<p>A Base theme template for creating your own theme.</p>
+							<a href="#">Download Base theme</a>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<h4>Canada.ca theme</h4>
+							<a href="http://wet-boew.github.io/themes-dist/GCWeb/docs/ref/GCWeb/GCWeb-en.html" target="_blank"><object type="image/svg+xml" tabindex="-1" role="img" data="images/canada.catheme.svg" aria-label="Web Experience Toolkit"></object></a>
+							<p>Mandatory theme for Canada.ca users only. It implements requirements for Canada.ca</p>
+							<a href="#">Download Canada.ca theme</a>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<h4>Intranet theme</h4>
+							<a href="http://wet-boew.github.io/themes-dist/theme-gc-intranet/docs/ref/theme-gc-intranet/theme-gc-intranet-en.html" target="_blank"><object type="image/svg+xml" tabindex="-1" role="img" data="images/intranettheme.svg" aria-label="Web Experience Toolkit"></object></a>
+							<p>Built by the community for the community, open for re-use and adapting.</p>
+							<a href="#">Download Intranet theme</a>
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-6">
+							<h4>Usability theme</h4>
+							<a href="http://wet-boew.github.io/themes-dist/theme-gcwu-fegc/docs/ref/theme-gcwu-fegc/theme-gcwu-fegc-en.html" target="_blank"><object type="image/svg+xml" tabindex="-1" role="img" data="images/usabilitytheme.svg" aria-label="Web Experience Toolkit"></object></a>
+							<p>This theme implements the Standards of Web Usability.</p>
+							<a href="#">Download Usability theme</a>
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-6">
+							<h4>WET theme</h4>
+							<a href="http://wet-boew.github.io/wet-boew/docs/ref/theme-wet-boew/theme-wet-boew-en.html" target="_blank"><object type="image/svg+xml" tabindex="-1" role="img" data="images/wettheme.svg" aria-label="Web Experience Toolkit"></object></a>
+							<p>In use on this site, this theme is an example of how the base theme can be easily changed.</p>
+							<a href="#">Download WET theme</a>
+						</div>
+			</div>
+				</div>
+			</details>
+			</div>
+			<div class="row">
+			<details>
+				<summary>
+					 <span class="step-title"><object type="image/svg+xml" tabindex="-1" role="img" data="images/2-circle.svg" aria-label="Web Experience Toolkit"></object>Components</span> <span class="step-details">The Toolkit contains reusable components to add interactive and accessible features to your site such as widgets, form validation, navigation menus, web feeds, and many more.</span>
+				</summary>
+					<div class="panel panel-default">
+						<header class="panel-heading">
+							<h3 class="panel-title">Plugins</h3>
+						</header>
+						<div class="panel-body">
+							<div class="col-md-4"><p>Each plug-in adds functionality by calling the function in the class attribute of an HTML tag.</p></div>
+							<div class="col-md-8"><h4>Featured Plug-in: Lightbox gallery</h4>
+								<div class="row">
+									<div class="col-md-4 col sm-4">
+									<section class="wb-lbx lbx-hide-gal">
+									<ul class="list-inline">
+										<li>
+											<a href="../wet-boew/demos/lightbox/demo/1_b.jpg" title="Image 1">
+												<img src="../wet-boew/demos/lightbox/demo/1_s.jpg" alt="Image 1" />
+											</a>
+										</li>
+										<li>
+											<a href="../wet-boew/demos/lightbox/demo/2_b.jpg" title="Image 2">
+												<img src="../wet-boew/demos/lightbox/demo/2_s.jpg" alt="Image 2" />
+											</a>
+										</li>
+										<li>
+											<a href="../wet-boew/demos/lightbox/demo/3_b.jpg" title="Image 3">
+												<img src="../wet-boew/demos/lightbox/demo/3_s.jpg" alt="Image 3" />
+											</a>
+										</li>
+										<li>
+											<a href="../wet-boew/demos/lightbox/demo/4_b.jpg" title="Image 4">
+												<img src="../wet-boew/demos/lightbox/demo/4_s.jpg" alt="Image 4" />
+											</a>
+										</li>
+									</ul>
+								</section>
+									</div>
+									<div class="col-md-8 col-sm-8">
+									<p>When a user clicks on, selects or holds the image, the photo gallery opens in a fullscreen lightbox where they can view the images one by one.</p>
+									<a class= "btn btn-default" href="http://wet-boew.github.io/v4.0-ci/demos/lightbox/lightbox-en.html">Learn more</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<header class="panel-heading">
+							<h3 class="panel-title">Polyfills</h3>
+						</header>
+						<div class="panel-body">
+							<div class="col-md-4"><p>Polyfills are JavaScript components that mimic the behaviour of HTML5 tags in browsers in order to provide backwards compatibility for browsers that do not support HTML5.</p></div>
+							<div class="col-md-8"><h4>Featured Polyfill: Autocomplete</h4>
+								<div class="row">
+									<div class="col-md-4 col-sm-5 col-xs-5">	
+									<label for="city">City</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4 col-sm-5 col-xs-5">	
+									<input type="text" id="city" name="city" list="suggestions" />
+									<datalist id="suggestions">
+										<!--[if lte IE 9]><select><![endif]-->
+										<option label="Barrie" value="Barrie"></option>
+										<option label="Calgary" value="Calgary"></option>
+										<option label="Charlottetown" value="Charlottetown"></option>
+										<option label="Chibougamau" value="Chibougamau"></option>
+										<option label="Chilliwack" value="Chilliwack"></option>
+										<option label="Cold Lake" value="Cold Lake"></option>
+										<option label="Dorval" value="Dorval"></option>
+										<option label="Edmonton" value="Edmonton"></option>
+										<option label="Flin Flon" value="Flin Flon"></option>
+										<option label="Hamilton" value="Hamilton"></option>
+										<option label="Iqualuit" value="Iqualuit"></option>
+										<option label="Ottawa" value="Ottawa"></option>
+										<option label="Miramichi" value="Miramichi"></option>
+										<option label="Montreal" value="Montreal"></option>
+										<option label="Red Deer" value="Red Deer"></option>
+										<option label="St. John" value="St. John"></option>
+										<option label="St. John's" value="St. John's"></option>
+										<option label="Toronto" value="Toronto"></option>
+										<option label="Vancouver" value="Vancouver"></option>
+										<option label="Whitehorse" value="Whitehorse"></option>
+										<option label="Winnipeg" value="Winnipeg"></option>
+										<option label="Yellowknife" value="Yellowknife"></option>
+										<!--[if lte IE 9]></select><![endif]-->
+									</datalist>
+									</div>
+								
+								
+							
+									<div class="col-md-8 col-sm-8 col-xs-12">
+									<p>For example, when a user types a V into a field called City, all cities beginning with V will appear in the text box.</p>
+									<a class="btn btn-default" href="http://wet-boew.github.io/v4.0-ci/demos/datalist/datalist-en.html">Learn more</a>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+			</details>
+			</div>
+			<div class="row">
+			<details>
+				<summary>
+					<span class="step-title"><object type="image/svg+xml" tabindex="-1" role="img" data="images/3-circle.svg" aria-label="Web Experience Toolkit"></object>Design elements</span><span class="step-details">This guide explains how to design front-end elements of your website by changing the cascading style sheet (CSS). Let the magic begin!</span>
+				</summary>
 
-<section>
-	<h2 id="issues">I want to report a bug or ask a question about WET</h2>
-	<ol>
-		<li><a href="https://help.github.com/articles/signing-up-for-a-new-github-account">Create a GitHub account</a>.</li>
-		<li>Ask a question relating to the <a href="http://wet-boew.github.io/wet-boew-styleguide/v4/index-en.html">style guide</a> by <a href="https://github.com/wet-boew/wet-boew-styleguide/issues/new">creating a new issue on GitHub</a>.</li>
-		<li>Report a bug, ask a question or request a feature relating to WET by following the <a href="bugs-en.html">reporting guide</a>.</li>
-	</ol>
-</section>
-
-<section>
-	<h2 id="develop">I want to fix or improve WET as a developer</h2>
-	<ol>
-		<li><a href="http://nodejs.org/">Install NodeJS</a> for your platform.</li>
-		<li><a href="https://help.github.com/articles/signing-up-for-a-new-github-account">Create a GitHub account</a>.</li>
-		<li>Follow GitHub's guides on <a href="https://help.github.com/articles/set-up-git">setting up Git</a>.</li>
-		<li>Fork the <a href="https://github.com/wet-boew/wet-boew">wet-boew repository</a> by following the <a href="https://help.github.com/articles/fork-a-repo">GitHub forking guide</a>. Use the upstream URL of <code>https://github.com/wet-boew/wet-boew.git</code> in step 3.</li>
-		<li>Run <code>./script/setup</code> from the <code>wet-boew</code> directory in your command line console.</li>
-		<li>Run <code>grunt</code> to build the project. You may run <code>grunt --help</code> to see the build target descriptions.</li>
-		<li>The latest files will now be compiled to the <code>dist/</code> folder.</li>
-		<li>To contribute back, follow the instructions on <a href="pull-en.html">how to create a pull request</a>.</li>
-	</ol>
-</section>
+					<div class="panel panel-default">
+						<header class="panel-heading">
+							<h3 class="panel-title">Core design elements</h3>
+						</header>
+						<div class="panel-body">
+							<div class="col-md-4"><p>Here are some reusable and customizable design elements that you can use in designing your website. You can find more design elements in the <a href="http://wet-boew.github.io/wet-boew-styleguide/v4/design/index-en.html" target="_blank">design guide.</a></p>
+							<div class="row">
+							<ul class="col-md-6 col-sm-6">
+								<li><a href="#">Buttons</a></li>
+								<li><a href="#">Sizing</a></li>	
+								<li><a href="#">Alignment</a></li>	
+								<li><a href="#">Alerts</a></li>		
+							</ul>	
+							<ul class="col-md-6 col-sm-6">
+								<li><a href="#">Grids</a></li>
+								<li><a href="#">Lists</a></li>	
+								<li><a href="#">Forms</a></li>	
+								<li><a href="#">Images</a></li>		
+							</ul>
+							</div>
+							</div>
+							<div class="col-md-8"><h4>Featured Example: Alert box</h4>
+								<section class="alert alert-success">
+									<h3>Well done!</h3>
+									<p>You successfully read this important alert message.</p>
+								</section>							
+									
+									<p>Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
+									<a class="btn btn-default" href="#">Learn more</a>
+							</div>
+						</div>
+					</div>
+			</details>
+		</div>
+	</div>
