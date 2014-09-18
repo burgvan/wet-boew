@@ -24,6 +24,7 @@ var componentName = "wb-mltmd",
 	youtubeEvent = "youtube" + selector,
 	resizeEvent = "resize" + selector,
 	templateLoadedEvent = "templateloaded" + selector,
+	cuepointEvent = "cuepoint" + selector,
 	captionClass = "cc_on",
 	$document = wb.doc,
 	$window = wb.win,
@@ -454,14 +455,12 @@ var componentName = "wb-mltmd",
 		case "setCaptionsVisible":
 			if ( args ) {
 				$( this).addClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", this.object.getOption( "captions", "tracklist" )[ 0 ] );
-				}
+				this.object.loadModule("cc");
+				this.object.loadModule("captions");
 			} else {
 				$( this ).removeClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", {} );
-				}
+				this.object.unloadModule("cc");
+				this.object.unloadModule("captions");
 			}
 			$player.trigger( "ccvischange" );
 		}
@@ -473,36 +472,36 @@ var componentName = "wb-mltmd",
 	 * @param {object} event The event object fior the triggered event
 	 */
 	youTubeEvents = function( event ) {
-		var target = event.target.a,
-			$target = $( event.target.a ),
+		var playerTarget = event.target.getIframe(),
+			$playerTarget = $( playerTarget ),
 			timeline = function() {
-				$target.trigger( "timeupdate" );
+				$playerTarget.trigger( "timeupdate" );
 			};
 
 		switch ( event.data ) {
 		case null:
-			$target.trigger( "canplay" );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case -1:
 			event.target.unMute();
-			$target.trigger( "durationchange" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case 0:
-			$target.trigger( "ended" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "ended" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 1:
-			$target.trigger( "canplay" );
-			$target.trigger( "durationchange" );
-			$target.trigger( "play" );
-			target.timeline = setInterval( timeline, 250 );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "play" );
+			playerTarget.timeline = setInterval( timeline, 250 );
 			break;
 		case 2:
-			$target.trigger( "pause" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "pause" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 3:
-			target.timeline = clearInterval( target.timeline );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		}
 	},
@@ -780,9 +779,9 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
 				( type === "audio" ? type : "video" ) + "\", \"title\": \"" +
 				data.title + "\", \"url\": \"" + data.shareUrl +
-				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
-			$media.parent().before( $share );
-			wb.add( $share );
+				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" )
+				.insertBefore( $media.parent() )
+				.trigger( "wb-init.wb-share" );
 		}
 
 		if ( data.captions === undef ) {
@@ -826,6 +825,8 @@ $document.on( "click", selector, function( event ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05);
 	} else if ( className.match( /\bfastforward\b|-forward/ ) ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05);
+	} else if ( className.match( /cuepoint/ ) ) {
+		$(this).trigger( { type: "cuepoint", cuepoint: $target.data( "cuepoint" ) } );
 	}
 });
 
@@ -888,7 +889,7 @@ $document.on( "keyup", selector, function( event ) {
 
 $document.on( "durationchange play pause ended volumechange timeupdate " +
 	captionsLoadedEvent + " " + captionsLoadFailedEvent + " " +
-	captionsVisibleChangeEvent +
+	captionsVisibleChangeEvent + " " + cuepointEvent +
 	" waiting canplay", selector, function( event, simulated ) {
 
 	var eventTarget = event.currentTarget,
@@ -1013,6 +1014,9 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		this.loading = clearTimeout( this.loading );
 		$this.find( ".display" ).removeClass( "waiting" );
 		break;
+	case "cuepoint":
+		eventTarget.player( "setCurrentTime", parseTime( event.cuepoint ) );
+		break;
 	}
 });
 
@@ -1042,7 +1046,7 @@ $document.on( resizeEvent, selector, function( event ) {
 			$player = $( player ),
 			ratio, newHeight;
 
-		if ( $player.hasClass( "video" ) ) {
+		if ( $( event.currentTarget ).hasClass( "video" ) ) {
 			if ( player.videoWidth === 0 || player.videoWidth === undef ) {
 				ratio = $player.attr( "height" ) / $player.attr( "width" );
 
